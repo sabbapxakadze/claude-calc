@@ -121,6 +121,7 @@ function calculate(final = true) {
   }
 
   result = round(result);
+  // Luka's comment
   // comment for me
 
   if (final) {
