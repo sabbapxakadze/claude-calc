@@ -121,6 +121,7 @@ function calculate(final = true) {
   }
 
   result = round(result);
+  // comment for me
 
   if (final) {
     const expr = `${formatNumber(state.previous)} ${state.operator} ${formatNumber(state.current)}`;
