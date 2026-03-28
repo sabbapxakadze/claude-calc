@@ -13,6 +13,8 @@ const state = {
   openParens:   0,          // track open parens for sci mode
 };
 
+// ADD TEST CUSTOM COMMENT
+
 // ─── DOM refs ────────────────────────────────────────────────────
 const $ = id => document.getElementById(id);
 const resultEl   = $('result');
