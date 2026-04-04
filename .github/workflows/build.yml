@@ -1,0 +1,23 @@
+name: Build
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: List project files
+        run: ls -la
+
+      - name: Verify required files exist
+        run: |
+          test -f index.html  && echo "index.html OK"
+          test -f css/styles.css && echo "styles.css OK"
+          test -f js/calculator.js && echo "calculator.js OK"
+
+      - name: Build complete
+        run: echo "Build successful"
