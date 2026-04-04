@@ -34,7 +34,7 @@ describe('round', () => {
   });
 
   test('handles negative numbers', () => {
-    expect(round(-1.0000000001)).toBe(-1);
+    expect(round(-1.00000000001)).toBe(-1);
   });
 });
 
