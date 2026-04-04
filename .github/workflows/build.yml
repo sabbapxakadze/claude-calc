@@ -3,21 +3,35 @@ name: Build
 on:
   workflow_dispatch:
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
 
-      - name: List project files
-        run: ls -la
-
       - name: Verify required files exist
         run: |
-          test -f index.html  && echo "index.html OK"
-          test -f css/styles.css && echo "styles.css OK"
+          test -f index.html       && echo "index.html OK"
+          test -f css/styles.css   && echo "styles.css OK"
           test -f js/calculator.js && echo "calculator.js OK"
 
-      - name: Build complete
-        run: echo "Build successful"
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
