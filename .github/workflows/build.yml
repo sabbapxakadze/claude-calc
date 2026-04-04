@@ -31,7 +31,12 @@ jobs:
     permissions:
       pages: write
       id-token: write
+    outputs:
+      page_url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Print live URL
+        run: echo "Deployed to ${{ steps.deployment.outputs.page_url }}"
